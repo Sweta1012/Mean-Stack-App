@@ -1,0 +1,20 @@
+<h2 class="page-header">Edit Blog</h2>
+
+<div [ngClass]= "messageClass" *ngIf="message" >
+  {{ message }}
+</div>
+<form *ngIf= "!loading" (submit)="editBlogSubmit()">
+  <div class="from-group">
+    <label for ="Title">Title</label>
+    <input type="text" name="title" placeholder="Blog title" class="form-control" [(ngModel)]="blog.title">
+  </div>
+
+  <div class="from-group">
+    <label for ="body">Body</label>
+    <textarea  name="body" rows="8" cols="50" placeholder="Blog Body"
+     class="form-control" [(ngModel)]="blog.body"></textarea>
+   <a [routerLink]="['/delete-blog/', blog._id]" ><button name="button" class="btn btn-danger"> Delete</button></a>
+    &nbsp;<button class=" btn btn-success" name="button"(click)= "goBack()">Go Back</button>
+    &nbsp;<button class=" btn btn-info" name="save" type="submit">Save Changes</button>
+  </div>
+</form>

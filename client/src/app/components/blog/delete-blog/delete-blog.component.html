@@ -1,0 +1,23 @@
+<h2 class="page-header">Delete Blog</h2>
+<div [ngClass]="messageClass">
+  {{ message }}
+</div>
+<div class= "modal-content">
+  <div class= "modal-header">
+    <h4 class="modal-title">Confirm</h4>
+  </div>
+  <div class="modal=body">
+  &nbsp;  <div>
+        <p>
+            Are you sure you would like to delete the blog?
+          </p>
+    </div>&nbsp;
+    
+    <div class="modal-footer">
+    <button class="btn btn-success"(click)="deleteblog()" > Yes</button>
+   &nbsp; <a routerLink="/blog"> <button class="btn btn-danger"> No</button></a> 
+
+    </div>
+
+  </div>
+</div>

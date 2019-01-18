@@ -1,0 +1,37 @@
+<h2 class="page-header">Login</h2>
+
+<div [ngClass]= "messageClass">
+  {{ message }}
+</div>
+
+<!-- Login Form -->
+<form [formGroup]="form" (submit)="onLoginSubmit()">
+
+  <!-- Username Field -->
+  <div class="form-group">
+    <label for ="username"> Username</label>
+  <div [ngClass] = "{ 'has-error':(form.controls.username.errors && form.controls.username.dirty), 
+  'has-success': !form.controls.username.errors }">
+   <input type="text" name="username" class="form-control" autocomplete="off" placeholder="*Username"
+   formControlName="username" />
+   <!-- Validation -->
+ <p *ngIf= "form.controls.username.errors?.required && form.controls.username.dirty"> Please enter username</p>
+    </div> 
+  </div>
+
+  <!-- Password Field  -->
+  <div class="form-group">
+    <label for ="password"> Password</label>
+  <div [ngClass] = "{ 'has-error':(form.controls.password.errors && form.controls.password.dirty), 
+  'has-success': !form.controls.password.errors }">
+   <!-- Validation -->
+   <input type="password" name="password" class="form-control" autocomplete="off" placeholder="*Password" formControlName="password" />
+   <p *ngIf= "form.controls.password.errors?.required && form.controls.password.dirty"> Please enter your password</p>
+    </div> 
+  </div>
+  
+  <!-- Submit Button -->
+
+    <input [disabled]="!form.valid" type="submit" class="btn btn-primary" value="Login" />
+ 
+</form>

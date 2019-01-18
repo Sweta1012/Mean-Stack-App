@@ -1,0 +1,45 @@
+<h1 class ="page-header"> Registration form at your service :)</h1>
+<div [ngClass]= "messageClass">
+    {{ message }}
+  </div>
+  
+
+<!-- Register Form -->
+<form [formGroup] = "form"  (submit) = "onRegisterSubmit()">
+
+ <!-- Username Field -->
+  <div class="form-group">
+    <label for ="username"> Username</label>
+  <div [ngClass] = "{ 'has-error':(form.controls.username.errors && form.controls.username.dirty), 
+  'has-success': !form.controls.username.errors }">
+   <input type="text" name="username" class="form-control" autocomplete="off" placeholder="*Username"
+   formControlName="username" />
+   <!-- Validation -->
+ <p *ngIf= "form.controls.username.errors?.required && form.controls.username.dirty"> Please enter username</p>
+    </div> 
+  </div>
+  
+ <!-- Email Field  -->
+    <div class="form-group">
+      <label for ="email"> Email</label>
+    <div [ngClass] = "{ 'has-error':(form.controls.email.errors && form.controls.email.dirty), 
+    'has-success': !form.controls.email.errors }">
+    <!-- Validation -->
+     <input type ="email" name="email" class="form-control" autocomplete="off" placeholder="*Email" formControlName="email"/>
+     <p *ngIf= "form.controls.email.errors?.required && form.controls.email.dirty"> Please enter valid email</p>
+     </div> 
+    </div>
+
+ <!-- Password Field  -->
+    <div class="form-group">
+        <label for ="password"> Password</label>
+      <div [ngClass] = "{ 'has-error':(form.controls.password.errors && form.controls.password.dirty), 
+      'has-success': !form.controls.password.errors }">
+      <!-- Validation -->
+       <input type="password" name="password" class="form-control" autocomplete="off" placeholder="*Password" formControlName="password" />
+       <p *ngIf= "form.controls.password.errors?.required && form.controls.password.dirty"> Please enter your password</p>
+        </div> 
+      </div>
+
+        <input [disabled]="!form.valid" type="submit" class="btn btn-primary" value="Submit" />
+</form>
